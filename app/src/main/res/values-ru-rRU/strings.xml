@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NeRecipe</string>
+    <string name="search">Поиск</string>
+    <string name="add_recipe">Добавить рецепт</string>
+    <string name="my_favorite">Избранное</string>
+</resources>
