@@ -4,4 +4,8 @@
     <string name="search">Поиск</string>
     <string name="add_recipe">Добавить рецепт</string>
     <string name="my_favorite">Избранное</string>
+    <string name="title">Название</string>
+    <string name="author_name">Имя автора</string>
+    <string name="steps_of_recipe">Шаги рецепта</string>
+    <string name="category">Категория</string>
 </resources>

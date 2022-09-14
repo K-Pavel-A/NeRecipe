@@ -14,35 +14,35 @@
         app:layout_constraintBottom_toTopOf="@id/bottom_barrier"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
-<!--    <com.google.android.material.button.MaterialButton-->
-<!--        android:id="@+id/searchstring_view"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="@id/searchstring_view"-->
-<!--        app:layout_constraintBottom_toBottomOf="@id/searchstring_view"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        android:layout_marginStart="16dp"-->
-<!--        android:layout_marginEnd="16dp"-->
-<!--        android:background="@android:color/transparent"-->
-<!--        android:text="@string/search"-->
-<!--        android:textColor="@color/black"-->
-<!--        style="?attr/materialButtonOutlinedStyle"-->
-<!--        app:icon="@drawable/ic_search_24dp"-->
-<!--        android:gravity="start"-->
-<!--        app:iconGravity="start"-->
-<!--        />-->
+    <!--    <com.google.android.material.button.MaterialButton-->
+    <!--        android:id="@+id/searchstring_view"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="@id/searchstring_view"-->
+    <!--        app:layout_constraintBottom_toBottomOf="@id/searchstring_view"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        android:layout_marginStart="16dp"-->
+    <!--        android:layout_marginEnd="16dp"-->
+    <!--        android:background="@android:color/transparent"-->
+    <!--        android:text="@string/search"-->
+    <!--        android:textColor="@color/black"-->
+    <!--        style="?attr/materialButtonOutlinedStyle"-->
+    <!--        app:icon="@drawable/ic_search_24dp"-->
+    <!--        android:gravity="start"-->
+    <!--        app:iconGravity="start"-->
+    <!--        />-->
 
-<!--    <ImageButton-->
-<!--        android:id="@+id/filters_button"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:layout_constraintEnd_toEndOf="@id/searchstring_view"-->
-<!--        app:layout_constraintBottom_toBottomOf="@id/searchstring_view"-->
-<!--        app:layout_constraintTop_toTopOf="@id/searchstring_view"-->
-<!--        android:src="@drawable/ic_filter_list_24dp"-->
-<!--        android:background="@android:color/transparent"-->
-<!--        />-->
+    <!--    <ImageButton-->
+    <!--        android:id="@+id/filters_button"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        app:layout_constraintEnd_toEndOf="@id/searchstring_view"-->
+    <!--        app:layout_constraintBottom_toBottomOf="@id/searchstring_view"-->
+    <!--        app:layout_constraintTop_toTopOf="@id/searchstring_view"-->
+    <!--        android:src="@drawable/ic_filter_list_24dp"-->
+    <!--        android:background="@android:color/transparent"-->
+    <!--        />-->
 
     <ImageView
         android:id="@+id/footer_imageview"
@@ -78,7 +78,7 @@
         style="@style/Widget.MaterialComponents.Button.TextButton"
         app:icon="@drawable/ic_favorite_list_24dp"
         android:background="@android:color/transparent"
-    />
+        />
 
 
     <androidx.constraintlayout.widget.Barrier

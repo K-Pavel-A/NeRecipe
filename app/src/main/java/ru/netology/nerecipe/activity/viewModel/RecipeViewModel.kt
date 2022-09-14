@@ -1,6 +1,7 @@
 package ru.netology.nerecipe.activity.viewModel
 
 import android.app.Application
+import android.app.usage.UsageEvents
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import ru.netology.nerecipe.activity.Recipe
@@ -21,16 +22,8 @@ class RecipeViewModel(
 
     val currentRecipe = MutableLiveData<Recipe?>(null)
     val editEvent = SingleLiveEvent<Recipe?>()
-//    val navigateToPostEvent = SingleLiveEvent<Long>()
-
-    private val empty = Recipe(
-        id = 0,
-        content = "Здесь будет рецепт",
-        author = "Me",
-        likedByMe = false,
-        category = "Азиатская",
-        title = "Стейки"
-    )
+    val openRecipeEvent = SingleLiveEvent<Recipe>()
+    val filteredRecipe = MutableLiveData<Recipe?>(null)
 
     override fun onLikedClicked(recipe: Recipe) = repository.like(recipe.id)
 
@@ -41,32 +34,26 @@ class RecipeViewModel(
         editEvent.value = recipe
     }
 
-    fun onSaveButtonClicked(content:String){
-        if (content.isBlank()) return
-        val recipe = currentRecipe.value?.copy(content = content) ?: Recipe (
+    fun onSaveButtonClicked(author:String, stepsRecipe:String, title:String, category: String){
+        if (stepsRecipe.isBlank()) return
+        val recipe = currentRecipe.value?.copy(stepsRecipe = stepsRecipe, author = author, title = title) ?: Recipe (
             id = RecipeRepository.NEW_RECIPE_ID,
-            author = "Me",
-            content = content,
-            category = "Категория",
-            title = "Стейки"
+            author = author,
+            stepsRecipe = stepsRecipe,
+            category = category,
+            title = title
         )
         repository.save(recipe)
         currentRecipe.value = null
     }
 
-    fun changeContent(content: String) {
-        val text = content.trim()
-        if (currentRecipe.value?.content == text) {
-            return
-        }
-        currentRecipe.value = currentRecipe.value?.copy(content = text)
+    override fun onRecipeClicked(recipe: Recipe) {
+        openRecipeEvent.value = recipe
     }
 
-    fun save() {
-        currentRecipe.value?.let {
-            repository.save(it)
-        }
-        currentRecipe.value = empty
+    override fun onFavoriteClicked(recipe: Recipe) {
+        repository.favorite(recipe)
     }
+
 
 }

@@ -3,4 +3,8 @@
     <string name="search">Search</string>
     <string name="add_recipe">Add recipe</string>
     <string name="my_favorite">My favorite</string>
+    <string name="title">Title</string>
+    <string name="author_name">Author name</string>
+    <string name="steps_of_recipe">Steps of recipe</string>
+    <string name="category">Category</string>
 </resources>

@@ -22,7 +22,7 @@ class FileRecipeRepository(
     private var nextId: Long by Delegates.observable(
         prefs.getLong(NEXT_ID_PREFS_KEY, 0L)
     ) { _, _, newValue ->
-        prefs.edit() { putLong(NEXT_ID_PREFS_KEY, newValue) }
+        prefs.edit { putLong(NEXT_ID_PREFS_KEY, newValue) }
     }
 
     private var recipes
@@ -37,8 +37,8 @@ class FileRecipeRepository(
     override val data: MutableLiveData<List<Recipe>>
 
     init {
-        val postsFile = application.filesDir.resolve(FILE_NAME)
-        val posts: List<Recipe> = if (postsFile.exists()) {
+        val recipesFile = application.filesDir.resolve(FILE_NAME)
+        val recipes: List<Recipe> = if (recipesFile.exists()) {
             val inputStream = application.openFileInput(FILE_NAME)
             val reader = inputStream.bufferedReader()
             reader.use {
@@ -81,9 +81,13 @@ class FileRecipeRepository(
         const val NEXT_ID_PREFS_KEY = "recipes"
         const val FILE_NAME = "recipes.json"
     }
-//
-//    override fun getById(postId: Long): Post? {
-//        return posts.find { it.id == postId }
+
+    override fun favorite(recipe: Recipe){
+        val filteredList = recipes.filter { it.likedByMe }
+    }
+
+//    fun getById(recipeId: Long): Recipe? {
+//        return recipes.find { it.id == recipeId }
 //    }
 }
 

@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -10,7 +11,7 @@ android {
     buildFeatures.dataBinding = true
 
     defaultConfig {
-        applicationId "ru.netology.nmedia"
+        applicationId "ru.netology.nerecipe"
         minSdk 23
         targetSdk 32
         versionCode 1
