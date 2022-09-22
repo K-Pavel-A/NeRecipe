@@ -16,6 +16,12 @@
         <action
             android:id="@+id/action_feedFragment_to_oneRecipeFragment"
             app:destination="@id/oneRecipeFragment" />
+        <action
+            android:id="@+id/action_feedFragment_to_favoriteRecipeFragment"
+            app:destination="@id/favoriteRecipeFragment" />
+        <action
+            android:id="@+id/action_feedFragment_to_filtersFragment"
+            app:destination="@id/filtersFragment" />
     </fragment>
     <fragment
         android:id="@+id/newRecipeFragment"
@@ -28,5 +34,44 @@
         <action
             android:id="@+id/action_oneRecipeFragment_to_newRecipeFragment"
             app:destination="@id/newRecipeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoriteRecipeFragment"
+        android:name="ru.netology.nerecipe.activity.NewRecipeFragment.FavoriteRecipeFragment"
+        android:label="FavoriteRecipeFragment" >
+        <action
+            android:id="@+id/action_favoriteRecipeFragment_to_feedFragment"
+            app:destination="@id/feedFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/filteredRecipeFragment"
+        android:name="ru.netology.nerecipe.activity.NewRecipeFragment.FilteredRecipeFragment"
+        android:label="FilteredRecipeFragment" >
+        <action
+            android:id="@+id/action_filteredRecipeFragment_to_feedFragment"
+            app:destination="@id/feedFragment" />
+        <action
+            android:id="@+id/action_filteredRecipeFragment_to_newRecipeFragment"
+            app:destination="@id/newRecipeFragment" />
+        <action
+            android:id="@+id/action_filteredRecipeFragment_to_favoriteRecipeFragment"
+            app:destination="@id/favoriteRecipeFragment" />
+        <action
+            android:id="@+id/action_filteredRecipeFragment_to_filtersFragment"
+            app:destination="@id/filtersFragment" />
+        <action
+            android:id="@+id/action_filteredRecipeFragment_to_newRecipeFragment2"
+            app:destination="@id/newRecipeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/filtersFragment"
+        android:name="ru.netology.nerecipe.activity.NewRecipeFragment.FiltersFragment"
+        android:label="FiltersFragment" >
+        <action
+            android:id="@+id/action_filtersFragment_to_filteredRecipeFragment"
+            app:destination="@id/filteredRecipeFragment" />
+        <action
+            android:id="@+id/action_filtersFragment_to_feedFragment"
+            app:destination="@id/feedFragment" />
     </fragment>
 </navigation>

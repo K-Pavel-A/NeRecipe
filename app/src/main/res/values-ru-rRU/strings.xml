@@ -2,10 +2,21 @@
 <resources>
     <string name="app_name">NeRecipe</string>
     <string name="search">Поиск</string>
-    <string name="add_recipe">Добавить рецепт</string>
+    <string name="add_recipe">Добавить</string>
     <string name="my_favorite">Избранное</string>
     <string name="title">Название</string>
     <string name="author_name">Имя автора</string>
     <string name="steps_of_recipe">Шаги рецепта</string>
     <string name="category">Категория</string>
+    <string name="feed">Лента</string>
+    <string name="filter">Фильтр</string>
+    <string name="european">Европейская</string>
+    <string name="asian">Азиатская</string>
+    <string name="panasian">Паназиатская</string>
+    <string name="eastern">Восточная</string>
+    <string name="american">Американская</string>
+    <string name="russian">Русская</string>
+    <string name="mediterranean">Средиземноморская</string>
+    <string name="filters">Фильтры</string>
+    <string name="cancel_filter">Отменить фильтры</string>
 </resources>

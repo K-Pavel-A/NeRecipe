@@ -32,16 +32,16 @@ class NewRecipeFragment : Fragment() {
 
         binding.setCategoryButton.setOnClickListener{
             with(binding.categoryRecipeCheckBox){
-                visibility = View.VISIBLE
+                visibility = if(visibility == View.GONE) View.VISIBLE else View.GONE
                 setOnCheckedChangeListener { _, i ->
                     when (i) {
-                        R.id.checkBoxEuropean -> categoryRecipe = "European"
-                        R.id.checkBoxAsian -> categoryRecipe = "Asian"
-                        R.id.checkBoxPanasian -> categoryRecipe = "Panasian"
-                        R.id.checkBoxEastern -> categoryRecipe = "Eastern"
-                        R.id.checkBoxAmerican -> categoryRecipe = "American"
-                        R.id.checkBoxRussian -> categoryRecipe = "Russian"
-                        R.id.checkBoxMediterranean -> categoryRecipe = "Mediterranean"
+                        R.id.checkBoxEuropean -> categoryRecipe = "Европейская"
+                        R.id.checkBoxAsian -> categoryRecipe = "Азиатская"
+                        R.id.checkBoxPanasian -> categoryRecipe = "Паназиатская"
+                        R.id.checkBoxEastern -> categoryRecipe = "Восточная"
+                        R.id.checkBoxAmerican -> categoryRecipe = "Американская"
+                        R.id.checkBoxRussian -> categoryRecipe = "Русская"
+                        R.id.checkBoxMediterranean -> categoryRecipe = "Средиземноморская"
                     }
                     binding.categoryTextview.text = categoryRecipe
                     visibility = View.GONE
@@ -64,7 +64,6 @@ class NewRecipeFragment : Fragment() {
 
         return binding.root
     }
-
 
     companion object{
         var Bundle.categoryArg: String? by StringArg

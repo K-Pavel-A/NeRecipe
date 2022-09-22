@@ -6,74 +6,68 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.PopupMenu
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.map
 import androidx.navigation.fragment.findNavController
 import ru.netology.nerecipe.activity.NewRecipeFragment.NewRecipeFragment.Companion.authorArg
 import ru.netology.nerecipe.activity.NewRecipeFragment.NewRecipeFragment.Companion.categoryArg
 import ru.netology.nerecipe.activity.NewRecipeFragment.NewRecipeFragment.Companion.textArg
 import ru.netology.nerecipe.activity.NewRecipeFragment.NewRecipeFragment.Companion.titleArg
-import ru.netology.nerecipe.activity.NewRecipeFragment.OneRecipeFragment.Companion.textId
 import ru.netology.nerecipe.activity.R
 import ru.netology.nerecipe.activity.adapter.RecipeAdapter
+import ru.netology.nerecipe.activity.databinding.FragmentFilteredRecipeBinding
 import ru.netology.nerecipe.activity.viewModel.RecipeViewModel
-import ru.netology.nerecipe.activity.databinding.FragmentFeedBinding
 
-class FeedFragment : Fragment() {
-
-    val viewModel: RecipeViewModel by viewModels(ownerProducer = ::requireParentFragment)
+class FilteredRecipeFragment: Fragment() {
+    private val viewModel: RecipeViewModel by viewModels(ownerProducer = ::requireParentFragment)
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding = FragmentFeedBinding.inflate(inflater, container, false)
+        val binding = FragmentFilteredRecipeBinding.inflate(inflater, container, false)
 
         val adapter = RecipeAdapter(
             viewModel
         )
 
-        binding.recipesRecyclerView.adapter = adapter
+        binding.filteredRecipe.cancelButton.visibility = View.VISIBLE
+
+        binding.filteredRecipe.cancelButton.setOnClickListener{
+            viewModel.clearFilter()
+            findNavController().navigate(R.id.action_filteredRecipeFragment_to_feedFragment)
+        }
+
+        binding.filteredRecipe.recipesRecyclerView.adapter = adapter
 
         viewModel.data.observe(viewLifecycleOwner) { recipes ->
             adapter.submitList(recipes)
         }
 
-        binding.addrecipeButton.setOnClickListener {
-            findNavController().navigate(R.id.action_feedFragment_to_newRecipeFragment)
+        binding.filteredRecipe.filterButton.setOnClickListener{
+            viewModel.clearFilter()
+            findNavController().navigate(R.id.action_filteredRecipeFragment_to_filtersFragment)
         }
 
-        viewModel.editEvent.observe(viewLifecycleOwner) { currentRecipe ->
-            findNavController().navigate(R.id.action_feedFragment_to_newRecipeFragment,
-                Bundle().apply {
-                    categoryArg = currentRecipe?.category
-                    authorArg = currentRecipe?.author
-                    titleArg = currentRecipe?.title
-                    textArg = currentRecipe?.stepsRecipe
-                })
+        binding.filteredRecipe.feedButton.setOnClickListener{
+            viewModel.clearFilter()
+            findNavController().navigate(R.id.action_filteredRecipeFragment_to_feedFragment)
         }
 
-        viewModel.openRecipeEvent.observe(viewLifecycleOwner) { openRecipeEvent ->
-            if (openRecipeEvent != null) {
-                findNavController().navigate(
-                    R.id.action_feedFragment_to_oneRecipeFragment,
-                    Bundle().apply {
-                        textId = openRecipeEvent.id.toString()
-                    }
-                )
-            }
+        binding.filteredRecipe.favoriterecipeButton.setOnClickListener{
+            viewModel.clearFilter()
+            findNavController().navigate(R.id.action_filteredRecipeFragment_to_favoriteRecipeFragment)
         }
 
-        binding.favoriterecipeButton.setOnClickListener{
-            findNavController().navigate(R.id.action_feedFragment_to_favoriteRecipeFragment)
+        binding.filteredRecipe.addrecipeButton.setOnClickListener{
+            viewModel.clearFilter()
+            findNavController().navigate(R.id.action_filteredRecipeFragment_to_newRecipeFragment)
         }
 
-
-        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        binding.filteredRecipe.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false
             }
@@ -95,10 +89,17 @@ class FeedFragment : Fragment() {
             }
         })
 
-        binding.filterButton.setOnClickListener{
-            findNavController().navigate(R.id.action_feedFragment_to_filtersFragment)
+        viewModel.editEvent.observe(viewLifecycleOwner) { currentRecipe ->
+            findNavController().navigate(R.id.action_filteredRecipeFragment_to_newRecipeFragment,
+                Bundle().apply {
+                    categoryArg = currentRecipe?.category
+                    authorArg = currentRecipe?.author
+                    titleArg = currentRecipe?.title
+                    textArg = currentRecipe?.stepsRecipe
+                })
         }
 
         return binding.root
     }
+
 }

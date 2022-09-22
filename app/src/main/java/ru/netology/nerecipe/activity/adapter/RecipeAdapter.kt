@@ -57,7 +57,7 @@ class RecipeAdapter(
 
         init {
             binding.likerecipeButton.setOnClickListener {
-                listener.onLikedClicked(recipe)
+                listener.onLikeClicked(recipe.id)
             }
             binding.optionsButton.setOnClickListener { popupMenu.show() }
 

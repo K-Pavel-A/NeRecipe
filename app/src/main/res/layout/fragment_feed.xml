@@ -6,43 +6,50 @@
     android:layout_height="match_parent"
     tools:context=".NewRecipeFragment.FeedFragment">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        style="@style/Widget.MaterialComponents.Toolbar.Primary"
+        app:title="@string/app_name"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <SearchView
+        android:id="@+id/search_view"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        style="@style/Widget.MaterialComponents.Toolbar.Primary"
+        app:layout_constraintEnd_toEndOf="@id/top_bar"
+        app:layout_constraintTop_toTopOf="@id/top_bar"
+        app:layout_constraintBottom_toBottomOf="@id/top_bar"
+        android:autofillHints="Search"
+        />
+
+
+    <androidx.constraintlayout.utils.widget.ImageFilterButton
+        android:id="@+id/filter_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/top_bar"
+        app:layout_constraintBottom_toBottomOf="@id/top_bar"
+        app:layout_constraintEnd_toStartOf="@id/search_view"
+        android:src="@drawable/ic_filter_list_24dp"
+        style="@style/Widget.MaterialComponents.Toolbar.Primary"
+        />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recipes_RecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toTopOf="@id/bottom_barrier"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-
-<!--    <com.google.android.material.button.MaterialButton-->
-<!--        android:id="@+id/searchstring_view"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="@id/searchstring_view"-->
-<!--        app:layout_constraintBottom_toBottomOf="@id/searchstring_view"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        android:layout_marginStart="16dp"-->
-<!--        android:layout_marginEnd="16dp"-->
-<!--        android:background="@android:color/transparent"-->
-<!--        android:text="@string/search"-->
-<!--        android:textColor="@color/black"-->
-<!--        style="?attr/materialButtonOutlinedStyle"-->
-<!--        app:icon="@drawable/ic_search_24dp"-->
-<!--        android:gravity="start"-->
-<!--        app:iconGravity="start"-->
-<!--        />-->
-
-<!--    <ImageButton-->
-<!--        android:id="@+id/filters_button"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:layout_constraintEnd_toEndOf="@id/searchstring_view"-->
-<!--        app:layout_constraintBottom_toBottomOf="@id/searchstring_view"-->
-<!--        app:layout_constraintTop_toTopOf="@id/searchstring_view"-->
-<!--        android:src="@drawable/ic_filter_list_24dp"-->
-<!--        android:background="@android:color/transparent"-->
-<!--        />-->
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cancel_button"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/footer_imageview"
@@ -60,7 +67,7 @@
         app:layout_constraintTop_toTopOf="@id/footer_imageview"
         app:layout_constraintEnd_toEndOf="parent"
         android:text="@string/add_recipe"
-        app:layout_constraintStart_toEndOf="@id/favoriterecipe_button"
+        app:layout_constraintStart_toEndOf="@id/feed_button"
         style="@style/Widget.MaterialComponents.Button.TextButton"
         app:icon="@drawable/ic_add_24dp"
         android:background="@android:color/transparent"
@@ -73,12 +80,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="@id/footer_imageview"
-        app:layout_constraintEnd_toStartOf="@id/addrecipe_button"
+        app:layout_constraintEnd_toStartOf="@id/feed_button"
         android:text="@string/my_favorite"
         style="@style/Widget.MaterialComponents.Button.TextButton"
         app:icon="@drawable/ic_favorite_list_24dp"
         android:background="@android:color/transparent"
     />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/feed_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@id/footer_imageview"
+        app:layout_constraintEnd_toStartOf="@id/addrecipe_button"
+        app:layout_constraintStart_toEndOf="@id/favoriterecipe_button"
+        android:text="@string/feed"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        app:icon="@drawable/ic_feed_24dp"
+        android:background="@android:color/transparent"
+        />
 
 
     <androidx.constraintlayout.widget.Barrier
@@ -86,7 +107,22 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:constraint_referenced_ids="footer_imageview, addrecipe_button, favoriterecipe_button"
-        app:barrierDirection="bottom"
+        app:barrierDirection="top"
         />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/cancel_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cancel_filter"
+        app:layout_constraintTop_toBottomOf="@id/top_bar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:iconGravity="end"
+        app:icon="@drawable/ic_cancel_24"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:layout_marginStart="16dp"
+        />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
