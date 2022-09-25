@@ -22,8 +22,6 @@ class RecipeViewModel(
     val currentRecipe = MutableLiveData<Recipe?>(null)
     val editEvent = SingleLiveEvent<Recipe?>()
     val openRecipeEvent = SingleLiveEvent<Recipe?>()
-    val filterFragment = SingleLiveEvent<Recipe?>()
-    var filterOn = false
 
     override fun onRemoveClicked(recipe: Recipe) = repository.delete(recipe)
 
@@ -32,14 +30,31 @@ class RecipeViewModel(
         editEvent.value = recipe
     }
 
-    fun onSaveButtonClicked(author:String, stepsRecipe:String, title:String, category: String){
-        if (stepsRecipe.isBlank()) return
-        val recipe = currentRecipe.value?.copy(stepsRecipe = stepsRecipe, author = author, title = title, category = category) ?: Recipe (
+    fun onSaveButtonClicked(
+        author: String,
+        step1Recipe: String,
+        step2Recipe: String,
+        step3Recipe: String,
+        step4Recipe: String,
+        step5Recipe: String,
+        title: String,
+        category: String,
+        pictureUri: String
+    ) {
+        if (step1Recipe.isBlank()) return
+        val recipe = currentRecipe.value?.copy(
+            step1Recipe = step1Recipe, step2Recipe = step2Recipe, step3Recipe = step3Recipe, step4Recipe = step4Recipe,
+            step5Recipe = step5Recipe, author = author, title = title, category = category, pictureUri = pictureUri) ?: Recipe (
             id = RecipeRepository.NEW_RECIPE_ID,
             author = author,
-            stepsRecipe = stepsRecipe,
             category = category,
-            title = title
+            title = title,
+            pictureUri = pictureUri,
+            step1Recipe = step1Recipe,
+            step2Recipe = step2Recipe,
+            step3Recipe = step3Recipe,
+            step4Recipe = step4Recipe,
+            step5Recipe = step5Recipe
         )
         repository.save(recipe)
         currentRecipe.value = null
@@ -65,37 +80,30 @@ class RecipeViewModel(
 
     fun filterAsian(category: String) {
         repository.filterAsian(category)
-        filterOn = true
     }
 
     fun filterPanasian(category: String) {
         repository.filterPanasian(category)
-        filterOn = true
     }
 
     fun filterEastern(category: String) {
         repository.filterEastern(category)
-        filterOn = true
     }
 
     fun filterAmerican(category: String) {
         repository.filterAmerican(category)
-        filterOn = true
     }
 
     fun filterRussian(category: String) {
         repository.filterRussian(category)
-        filterOn = true
     }
 
     fun filterMediterranean(category: String) {
         repository.filterMediterranean(category)
-        filterOn = true
     }
 
     fun filterEuropean(category: String) {
         repository.filterEuropean(category)
-        filterOn = true
     }
 
 }

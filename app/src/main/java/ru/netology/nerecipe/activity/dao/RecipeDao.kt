@@ -19,12 +19,17 @@ interface RecipeDao {
                 "title = :title," +
                 "author = :author, " +
                 "category = :category," +
-                "stepsRecipe = :stepsRecipe" +
+                "step1Recipe = :step1Recipe," +
+                "step2Recipe = :step2Recipe," +
+                "step3Recipe = :step3Recipe," +
+                "step4Recipe = :step4Recipe," +
+                "step5Recipe = :step5Recipe," +
+                "pictureUri = :pictureUri"+
                 " WHERE id = :id"
     )
     fun updateRecipeById(
         id: Long, title: String, author: String,
-        category: String, stepsRecipe: String
+        category: String, step1Recipe:String, step2Recipe:String, step3Recipe:String, step4Recipe:String, step5Recipe:String, pictureUri: String
     )
 
     @Query(

@@ -11,7 +11,12 @@ import androidx.navigation.fragment.findNavController
 import ru.netology.nerecipe.activity.NewRecipeFragment.AppActivity.Companion.titleArg
 import ru.netology.nerecipe.activity.NewRecipeFragment.NewRecipeFragment.Companion.authorArg
 import ru.netology.nerecipe.activity.NewRecipeFragment.NewRecipeFragment.Companion.categoryArg
-import ru.netology.nerecipe.activity.NewRecipeFragment.NewRecipeFragment.Companion.textArg
+import ru.netology.nerecipe.activity.NewRecipeFragment.NewRecipeFragment.Companion.step1Arg
+import ru.netology.nerecipe.activity.NewRecipeFragment.NewRecipeFragment.Companion.step2Arg
+import ru.netology.nerecipe.activity.NewRecipeFragment.NewRecipeFragment.Companion.step3Arg
+import ru.netology.nerecipe.activity.NewRecipeFragment.NewRecipeFragment.Companion.step4Arg
+import ru.netology.nerecipe.activity.NewRecipeFragment.NewRecipeFragment.Companion.step5Arg
+import ru.netology.nerecipe.activity.NewRecipeFragment.NewRecipeFragment.Companion.uriArg
 import ru.netology.nerecipe.activity.R
 import ru.netology.nerecipe.activity.adapter.RecipeAdapter
 import ru.netology.nerecipe.activity.databinding.FragmentOneRecipeBinding
@@ -38,7 +43,13 @@ class OneRecipeFragment: Fragment() {
             }
             if (theRecipe != null) viewHolder.bind(theRecipe)
 
-            binding.onerecipe.stepsofrecipeTextview.visibility = View.VISIBLE
+            binding.onerecipe.stepsofrecipe1Textview.visibility = View.VISIBLE
+            binding.onerecipe.stepsofrecipe2Textview.visibility = View.VISIBLE
+            binding.onerecipe.stepsofrecipe2Textview.visibility = View.VISIBLE
+            binding.onerecipe.stepsofrecipe3Textview.visibility = View.VISIBLE
+            binding.onerecipe.stepsofrecipe4Textview.visibility = View.VISIBLE
+            binding.onerecipe.stepsofrecipe5Textview.visibility = View.VISIBLE
+
 
             val popupMenu by lazy {
                 PopupMenu(this.requireContext(), binding.onerecipe.optionsButton).apply {
@@ -62,7 +73,12 @@ class OneRecipeFragment: Fragment() {
                                             categoryArg = theRecipe.category
                                             authorArg = theRecipe.author
                                             titleArg = theRecipe.title
-                                            textArg = theRecipe.stepsRecipe
+                                            uriArg = theRecipe.pictureUri
+                                            step1Arg = theRecipe.step1Recipe
+                                            step2Arg = theRecipe.step2Recipe
+                                            step3Arg = theRecipe.step3Recipe
+                                            step4Arg = theRecipe.step4Recipe
+                                            step5Arg = theRecipe.step5Recipe
                                         }
                                     })
                                 true
@@ -80,6 +96,5 @@ class OneRecipeFragment: Fragment() {
 
     companion object{
         var Bundle.textId: String? by StringArg
-
     }
 }

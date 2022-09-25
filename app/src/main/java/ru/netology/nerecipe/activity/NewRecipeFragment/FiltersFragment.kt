@@ -5,22 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.map
 import androidx.navigation.fragment.findNavController
-import ru.netology.nerecipe.activity.NewRecipeFragment.NewRecipeFragment.Companion.authorArg
-import ru.netology.nerecipe.activity.NewRecipeFragment.NewRecipeFragment.Companion.categoryArg
-import ru.netology.nerecipe.activity.NewRecipeFragment.NewRecipeFragment.Companion.textArg
-import ru.netology.nerecipe.activity.NewRecipeFragment.NewRecipeFragment.Companion.titleArg
 import ru.netology.nerecipe.activity.R
-import ru.netology.nerecipe.activity.Recipe
-import ru.netology.nerecipe.activity.adapter.RecipeAdapter
 import ru.netology.nerecipe.activity.databinding.FragmentFiltersBinding
-import ru.netology.nerecipe.activity.utils.BooleanArg
-import ru.netology.nerecipe.activity.utils.StringArg
 import ru.netology.nerecipe.activity.viewModel.RecipeViewModel
 
 class FiltersFragment : Fragment() {

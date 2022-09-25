@@ -1,7 +1,9 @@
 package ru.netology.nerecipe.activity.adapter
 
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.PopupMenu
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -75,7 +77,16 @@ class RecipeAdapter(
                 authornameTextview.text = recipe.author
                 categoryTextview.text = recipe.category
                 likerecipeButton.isChecked = recipe.likedByMe
-                stepsofrecipeTextview.text = recipe.stepsRecipe
+                stepsofrecipe1Textview.text = recipe.step1Recipe
+                stepsofrecipe2Textview.text = recipe.step2Recipe
+                stepsofrecipe3Textview.text = recipe.step3Recipe
+                stepsofrecipe4Textview.text = recipe.step4Recipe
+                stepsofrecipe5Textview.text = recipe.step5Recipe
+                if (!recipe.pictureUri.isNullOrBlank()){
+                    recipepictureView.setImageURI(Uri.parse(recipe.pictureUri))
+                } else {
+                    recipepictureView.setImageResource(R.drawable.ic_baseline_fastfood_24)
+                }
             }
         }
     }
