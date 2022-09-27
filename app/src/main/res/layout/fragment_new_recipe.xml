@@ -8,18 +8,6 @@
     android:layout_height="match_parent"
     tools:context="ru.netology.nerecipe.activity.NewRecipeFragment.">
 
-    <ScrollView
-        android:id="@+id/newRecipe_scrollView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toTopOf="@id/ok"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/top_bar"
-        app:layout_constraintVertical_bias="0.0" />
-
-
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/top_bar"
         android:layout_width="match_parent"
@@ -32,32 +20,32 @@
 
     <EditText
         android:id="@+id/title"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/top_bar"
         android:hint="@string/title"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/avatar_recipe_view"
+        app:layout_constraintTop_toTopOf="@id/avatar_recipe_view"
         />
 
     <EditText
         android:id="@+id/authorName"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="@string/author_name"
         android:inputType="text"
-        android:minHeight="48dp"
         android:textColorHint="#757575"
+        app:layout_constraintBottom_toBottomOf="@id/avatar_recipe_view"
+        app:layout_constraintStart_toEndOf="@id/avatar_recipe_view"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title" />
+        />
 
     <TextView
         android:id="@+id/category_textview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/authorName"
+        app:layout_constraintTop_toBottomOf="@id/avatar_recipe_view"
         android:hint="@string/category"
         android:minHeight="48dp"
         android:textColorHint="#757575"
@@ -78,7 +66,7 @@
         />
 
     <EditText
-        android:id="@+id/textRecipe"
+        android:id="@+id/recipestep1_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/steps_of_recipe"
@@ -86,8 +74,168 @@
         android:minHeight="48dp"
         android:textColorHint="#757575"
         app:layout_constraintTop_toBottomOf="@id/category_barrier"
-        tools:layout_editor_absoluteX="8dp" />
+        tools:layout_editor_absoluteX="8dp"
+        tools:text = "Step 1"
+        />
 
+    <ImageButton
+        android:id="@+id/step1_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/recipestep1_text"
+        app:layout_constraintBottom_toBottomOf="@id/recipestep1_text"
+        app:layout_constraintEnd_toEndOf="@id/recipestep1_text"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/ic_add_box_24dp"
+        android:background="@android:color/transparent"
+        />
+
+
+    <EditText
+        android:id="@+id/recipestep2_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/steps_of_recipe"
+        android:inputType="textMultiLine"
+        android:minHeight="48dp"
+        android:textColorHint="#757575"
+        app:layout_constraintTop_toBottomOf="@id/recipestep1_text"
+        tools:layout_editor_absoluteX="8dp"
+        tools:text="Step2"
+        />
+
+    <ImageButton
+        android:id="@+id/recipestep2_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/recipestep2_text"
+        app:layout_constraintBottom_toBottomOf="@id/recipestep2_text"
+        app:layout_constraintEnd_toEndOf="@id/recipestep2_text"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/ic_add_box_24dp"
+        android:background="@android:color/transparent"
+        />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/step2_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="recipestep2_button, recipestep2_text"
+        android:visibility="gone"
+        tools:visibility="visible"
+        />
+
+    <EditText
+        android:id="@+id/recipestep3_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/steps_of_recipe"
+        android:inputType="textMultiLine"
+        android:minHeight="48dp"
+        android:textColorHint="#757575"
+        app:layout_constraintTop_toBottomOf="@id/recipestep2_text"
+        tools:layout_editor_absoluteX="8dp"
+        tools:text="Step3"
+        />
+
+    <ImageButton
+        android:id="@+id/recipestep3_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/recipestep3_text"
+        app:layout_constraintBottom_toBottomOf="@+id/recipestep3_text"
+        app:layout_constraintEnd_toEndOf="@+id/recipestep3_text"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/ic_add_box_24dp"
+        android:background="@android:color/transparent"
+        />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/step3_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="recipestep3_button, recipestep3_text"
+        android:visibility="gone"
+        tools:visibility="visible"
+        />
+
+    <EditText
+        android:id="@+id/recipestep4_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/steps_of_recipe"
+        android:inputType="textMultiLine"
+        android:minHeight="48dp"
+        android:textColorHint="#757575"
+        app:layout_constraintTop_toBottomOf="@id/recipestep3_text"
+        tools:layout_editor_absoluteX="8dp"
+        tools:text="Step4"
+        />
+
+    <ImageButton
+        android:id="@+id/recipestep4_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/recipestep4_text"
+        app:layout_constraintBottom_toBottomOf="@+id/recipestep4_text"
+        app:layout_constraintEnd_toEndOf="@+id/recipestep4_text"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/ic_add_box_24dp"
+        android:background="@android:color/transparent"
+        />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/step4_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="recipestep4_button, recipestep4_text"
+        android:visibility="gone"
+        tools:visibility="visible"
+        />
+
+    <EditText
+        android:id="@+id/recipestep5_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/steps_of_recipe"
+        android:inputType="textMultiLine"
+        android:minHeight="48dp"
+        android:textColorHint="#757575"
+        app:layout_constraintTop_toBottomOf="@id/recipestep4_text"
+        tools:layout_editor_absoluteX="8dp"
+        tools:text="Step5"
+        />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/step5_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="recipestep5_text"
+        android:visibility="gone"
+        tools:visibility="visible"
+        />
+
+    <ImageButton
+        android:id="@+id/avatar_button_view"
+        android:layout_width="108dp"
+        android:layout_height="108dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/top_bar"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:background="@android:color/transparent"
+        />
+
+    <ImageView
+        android:id="@+id/avatar_recipe_view"
+        android:layout_width="108dp"
+        android:layout_height="108dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/top_bar"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        app:srcCompat="@drawable/ic_baseline_fastfood_24"
+        />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/category_barrier"
@@ -105,7 +253,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/category_textview"
         android:visibility="gone"
-        tools:visibility="visible"
         >
 
         <RadioButton
@@ -162,8 +309,6 @@
         android:layout_marginBottom="16dp"
         android:src="@drawable/ic_fab_check_48dp"
         />
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

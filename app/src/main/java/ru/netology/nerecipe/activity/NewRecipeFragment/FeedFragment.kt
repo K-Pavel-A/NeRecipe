@@ -14,8 +14,13 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import ru.netology.nerecipe.activity.NewRecipeFragment.NewRecipeFragment.Companion.authorArg
 import ru.netology.nerecipe.activity.NewRecipeFragment.NewRecipeFragment.Companion.categoryArg
-import ru.netology.nerecipe.activity.NewRecipeFragment.NewRecipeFragment.Companion.textArg
+import ru.netology.nerecipe.activity.NewRecipeFragment.NewRecipeFragment.Companion.step1Arg
+import ru.netology.nerecipe.activity.NewRecipeFragment.NewRecipeFragment.Companion.step2Arg
+import ru.netology.nerecipe.activity.NewRecipeFragment.NewRecipeFragment.Companion.step3Arg
+import ru.netology.nerecipe.activity.NewRecipeFragment.NewRecipeFragment.Companion.step4Arg
+import ru.netology.nerecipe.activity.NewRecipeFragment.NewRecipeFragment.Companion.step5Arg
 import ru.netology.nerecipe.activity.NewRecipeFragment.NewRecipeFragment.Companion.titleArg
+import ru.netology.nerecipe.activity.NewRecipeFragment.NewRecipeFragment.Companion.uriArg
 import ru.netology.nerecipe.activity.NewRecipeFragment.OneRecipeFragment.Companion.textId
 import ru.netology.nerecipe.activity.R
 import ru.netology.nerecipe.activity.adapter.RecipeAdapter
@@ -53,7 +58,12 @@ class FeedFragment : Fragment() {
                     categoryArg = currentRecipe?.category
                     authorArg = currentRecipe?.author
                     titleArg = currentRecipe?.title
-                    textArg = currentRecipe?.stepsRecipe
+                    step1Arg = currentRecipe?.step1Recipe
+                    uriArg = currentRecipe?.pictureUri
+                    step2Arg = currentRecipe?.step2Recipe
+                    step3Arg = currentRecipe?.step3Recipe
+                    step4Arg = currentRecipe?.step4Recipe
+                    step5Arg = currentRecipe?.step5Recipe
                 })
         }
 
@@ -71,7 +81,6 @@ class FeedFragment : Fragment() {
         binding.favoriterecipeButton.setOnClickListener{
             findNavController().navigate(R.id.action_feedFragment_to_favoriteRecipeFragment)
         }
-
 
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {

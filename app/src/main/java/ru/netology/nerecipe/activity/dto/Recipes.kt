@@ -7,8 +7,13 @@ internal fun RecipeEntity.toModel() = Recipe(
     title = title,
     author = author,
     category = category,
-    stepsRecipe = stepsRecipe,
+    step1Recipe = step1Recipe,
+    step2Recipe = step2Recipe,
+    step3Recipe = step3Recipe,
+    step4Recipe = step4Recipe,
+    step5Recipe = step5Recipe,
     likedByMe = likedByMe,
+    pictureUri = pictureUri
 )
 
 internal fun Recipe.toEntity() = RecipeEntity(
@@ -16,6 +21,11 @@ internal fun Recipe.toEntity() = RecipeEntity(
     title = title,
     author = author,
     category = category,
-    stepsRecipe = stepsRecipe,
+    step1Recipe = step1Recipe,
+    step2Recipe = step2Recipe,
+    step3Recipe = step3Recipe,
+    step4Recipe = step4Recipe,
+    step5Recipe = step5Recipe,
     likedByMe = likedByMe,
+    pictureUri = pictureUri
 )

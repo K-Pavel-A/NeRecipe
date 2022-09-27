@@ -74,7 +74,8 @@ class FileRecipeRepository(
     override fun save(recipe: Recipe) {
         if (recipe.id == RecipeRepository.NEW_RECIPE_ID) dao.save(recipe = recipe.toEntity())
         else dao.updateRecipeById(
-            recipe.id, recipe.title, recipe.author, recipe.category, recipe.stepsRecipe
+            recipe.id, recipe.title, recipe.author, recipe.category, recipe.step1Recipe,recipe.step2Recipe,
+            recipe.step3Recipe,recipe.step4Recipe, recipe.step5Recipe, recipe.pictureUri
         )
     }
 
